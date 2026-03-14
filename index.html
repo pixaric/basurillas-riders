@@ -64,19 +64,30 @@
             transform: scale(1.05);
             filter: brightness(1.2);
         }
+
+        /* Estilos para el menú móvil */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100%);
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
 
     <!-- Navegación -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-acid/30 px-6 py-4 flex justify-between items-center">
+    <nav class="fixed w-full z-[100] bg-black/80 backdrop-blur-md border-b border-acid/30 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-3">
             <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-acid">
                 <i class="fas fa-trash-alt text-2xl text-black"></i>
             </div>
             <span class="font-bangers text-2xl text-acid italic">BASURILLAS RIDERS</span>
         </div>
-        <div class="hidden md:flex gap-8 font-marker text-lg">
+        
+        <!-- Menú Escritorio -->
+        <div class="hidden md:flex gap-8 font-marker text-lg items-center">
             <a href="#inicio" class="hover:text-acid transition">Inicio</a>
             <a href="#club" class="hover:text-acid transition">El Club</a>
             <a href="#premios" class="hover:text-acid transition">Podio</a>
@@ -84,8 +95,24 @@
             <a href="#eventos" class="hover:text-acid transition">Rutas</a>
             <a href="#unete" class="bg-acid text-black px-4 py-1 rounded skew-x-[-10deg] hover:bg-white transition">¡ÚNETE!</a>
         </div>
-        <button class="md:hidden text-acid text-2xl"><i class="fas fa-bars"></i></button>
+
+        <!-- Botón Hamburguesa -->
+        <button id="menu-btn" class="md:hidden text-acid text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full bg-black/95 z-[90] md:hidden pt-24 pb-10 border-b border-acid/50 shadow-2xl">
+        <div class="flex flex-col items-center gap-6 font-marker text-2xl">
+            <a href="#inicio" class="mobile-link hover:text-acid transition">Inicio</a>
+            <a href="#club" class="mobile-link hover:text-acid transition">El Club</a>
+            <a href="#premios" class="mobile-link hover:text-acid transition">Podio</a>
+            <a href="#motos" class="mobile-link hover:text-acid transition">El Garaje</a>
+            <a href="#eventos" class="mobile-link hover:text-acid transition">Rutas</a>
+            <a href="#unete" class="mobile-link bg-acid text-black px-8 py-2 rounded skew-x-[-10deg]">¡ÚNETE!</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="inicio" class="min-h-screen hero-gradient flex flex-col items-center justify-center text-center px-4 pt-20">
@@ -240,6 +267,28 @@
     </footer>
 
     <script>
+        // Lógica del menú móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
         const motosData = [
             { id: 1, tag: "READY TO RACE", marca: "KTM Duke 890", desc: "La naranja mecánica de El Bujías.", color: "orange", img: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=500&q=80" },
             { id: 2, tag: "PURE PASSION", marca: "Ducati Panigale", desc: "El terror rojo de Turbo.", color: "red", img: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=500&q=80" },
