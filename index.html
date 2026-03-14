@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basurillas Riders - Moto Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Roboto:wght@400;700&display=swap');
+
+        :root {
+            --acid-green: #8cc63f;
+            --ktm-orange: #ff6600;
+            --ducati-red: #e31b23;
+            --dark-trash: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--dark-trash);
+            color: #eeeeee;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-marker { font-family: 'Permanent Marker', cursive; }
+        .font-bangers { font-family: 'Bangers', cursive; letter-spacing: 2px; }
+
+        .bg-acid { background-color: var(--acid-green); }
+        .text-acid { color: var(--acid-green); }
+        .border-acid { border-color: var(--acid-green); }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-skew {
+            transition: transform 0.3s ease;
+        }
+        .card-skew:hover {
+            transform: translateY(-10px) rotate(1deg);
+        }
+
+        .grunge-border {
+            border: 3px solid var(--acid-green);
+            box-shadow: 5px 5px 0px var(--ktm-orange);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: var(--acid-green); border-radius: 5px; }
+
+        .glitch-text:hover {
+            text-shadow: 2px 0 var(--ducati-red), -2px 0 var(--ktm-orange);
+        }
+
+        .podium-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .podium-card:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-acid/30 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-acid">
+                <i class="fas fa-trash-alt text-2xl text-black"></i>
+            </div>
+            <span class="font-bangers text-2xl text-acid italic">BASURILLAS RIDERS</span>
+        </div>
+        <div class="hidden md:flex gap-8 font-marker text-lg">
+            <a href="#inicio" class="hover:text-acid transition">Inicio</a>
+            <a href="#club" class="hover:text-acid transition">El Club</a>
+            <a href="#premios" class="hover:text-acid transition">Podio</a>
+            <a href="#motos" class="hover:text-acid transition">El Garaje</a>
+            <a href="#eventos" class="hover:text-acid transition">Rutas</a>
+            <a href="#unete" class="bg-acid text-black px-4 py-1 rounded skew-x-[-10deg] hover:bg-white transition">¡ÚNETE!</a>
+        </div>
+        <button class="md:hidden text-acid text-2xl"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="min-h-screen hero-gradient flex flex-col items-center justify-center text-center px-4 pt-20">
+        <div class="max-w-4xl">
+            <h1 class="font-bangers text-6xl md:text-9xl mb-4 animate-pulse">
+                <span class="text-white">GAS A FONDO,</span><br>
+                <span class="text-acid italic">CORAZÓN DE CHATARRA</span>
+            </h1>
+            <p class="font-marker text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto uppercase tracking-widest">
+                22 Miembros. Un solo club. Sin reglas.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#unete" class="grunge-border bg-acid text-black font-bangers text-2xl px-10 py-3 hover:scale-105 transition duration-300">
+                    RECLUTAMIENTO
+                </a>
+                <a href="#motos" class="border-2 border-white text-white font-bangers text-2xl px-10 py-3 hover:bg-white hover:text-black transition duration-300">
+                    VER MOTOS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre el Club -->
+    <section id="club" class="py-20 px-6 bg-[#111]">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <div class="absolute -top-4 -left-4 w-full h-full border-2 border-acid z-0"></div>
+                <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80" alt="Garaje del club" class="relative z-10 grayscale hover:grayscale-0 transition duration-500 rounded-sm shadow-2xl">
+            </div>
+            <div>
+                <h2 class="font-bangers text-5xl text-acid mb-6">¿QUIÉNES SOMOS?</h2>
+                <p class="text-lg text-gray-400 mb-4 leading-relaxed">
+                    Nacimos en los garajes más oscuros, entre manchas de aceite y piezas de repuesto. Los <span class="text-white font-bold">Basurillas Riders</span> no somos un club de postureo. Somos apasionados de las dos ruedas que prefieren el rugido de un motor bien afinado que el brillo de una pintura nueva.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <div class="bg-zinc-900 p-4 border-l-4 border-orange-600">
+                        <h4 class="font-bangers text-xl text-orange-600">HERMANDAD</h4>
+                        <p class="text-sm">Nunca dejamos a un rider atrás en la carretera.</p>
+                    </div>
+                    <div class="bg-zinc-900 p-4 border-l-4 border-red-600">
+                        <h4 class="font-bangers text-xl text-red-600">PASIÓN</h4>
+                        <p class="text-sm">Si tiene dos ruedas y motor, nos gusta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Premios (Podio) -->
+    <section id="premios" class="py-20 px-6 bg-zinc-900 border-y border-acid/10">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="font-bangers text-6xl text-white mb-4 uppercase italic">PODIO DE LA <span class="text-acid">CHATARRA</span></h2>
+            <p class="font-marker text-acid text-xl mb-16 underline decoration-wavy">GANADORES DE LA ÚLTIMA RUTA</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+                <!-- Segundo Lugar -->
+                <div class="podium-card order-2 md:order-1 bg-zinc-800 p-6 border-t-8 border-gray-400 rounded-lg shadow-2xl">
+                    <div class="text-5xl text-gray-400 mb-4 italic font-bangers">2º PUESTO</div>
+                    <div class="w-24 h-24 bg-zinc-700 rounded-full mx-auto mb-4 border-4 border-gray-400 flex items-center justify-center">
+                        <i class="fas fa-motorcycle text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="font-bangers text-3xl text-white">TURBO</h3>
+                    <p class="text-acid font-marker italic">"El más rápido en el café"</p>
+                </div>
+
+                <!-- Primer Lugar -->
+                <div class="podium-card order-1 md:order-2 bg-zinc-800 p-8 border-t-8 border-acid rounded-lg shadow-[0_0_30px_rgba(140,198,63,0.3)] transform scale-110 z-10">
+                    <div class="text-7xl text-acid mb-4 italic font-bangers">1º PUESTO</div>
+                    <div class="w-32 h-32 bg-zinc-700 rounded-full mx-auto mb-4 border-4 border-acid flex items-center justify-center">
+                        <i class="fas fa-trophy text-6xl text-acid"></i>
+                    </div>
+                    <h3 class="font-bangers text-4xl text-white">EL BUJÍAS</h3>
+                    <p class="text-acid font-marker italic text-xl">"Rey del asfalto sucio"</p>
+                </div>
+
+                <!-- Tercer Lugar -->
+                <div class="podium-card order-3 md:order-3 bg-zinc-800 p-6 border-t-8 border-orange-800 rounded-lg shadow-2xl">
+                    <div class="text-5xl text-orange-800 mb-4 italic font-bangers">3º PUESTO</div>
+                    <div class="w-24 h-24 bg-zinc-700 rounded-full mx-auto mb-4 border-4 border-orange-800 flex items-center justify-center">
+                        <i class="fas fa-wrench text-4xl text-orange-800"></i>
+                    </div>
+                    <h3 class="font-bangers text-3xl text-white">ACEITE</h3>
+                    <p class="text-acid font-marker italic">"No rompió nada esta vez"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marcas / Garaje (22 Motos) -->
+    <section id="motos" class="py-20 px-6 bg-black relative overflow-hidden">
+        <div class="absolute top-0 right-0 opacity-10 font-bangers text-9xl pointer-events-none text-acid">KTM DUCATI KAWASAKI HONDA YAMAHA</div>
+        
+        <div class="text-center mb-16">
+            <h2 class="font-bangers text-5xl inline-block border-b-4 border-acid pb-2">NUESTRO GARAJE (LOS 22)</h2>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="grid-motos">
+            <!-- Las motos se inyectan aquí manteniendo el diseño original -->
+        </div>
+    </section>
+
+    <!-- Próximos Eventos -->
+    <section id="eventos" class="py-20 px-6 bg-acid text-black">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-bangers text-5xl text-center mb-12 uppercase italic underline">PRÓXIMAS RUTAS Y QUEDADAS</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white p-6 flex flex-col md:flex-row justify-between items-center gap-4 shadow-[10px_10px_0px_black] border-2 border-black">
+                    <div class="text-center md:text-left">
+                        <span class="font-marker text-xl">15 MARZO</span>
+                        <h4 class="font-bangers text-3xl">RUTA DEL CABRERÉS</h4>
+                        <p class="font-bold">Salida: 08:00 AM - Gasolinera El Vertedero</p>
+                    </div>
+                    <button class="bg-black text-white px-8 py-3 font-bangers text-xl hover:bg-zinc-800">APUNTARSE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto / Reclutamiento -->
+    <section id="unete" class="py-20 px-6 bg-zinc-950">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <h2 class="font-bangers text-6xl text-white mb-4">¿QUIERES SER UN <span class="text-acid">BASURILLA?</span></h2>
+            <p class="font-marker text-gray-400">Si tu moto pierde aceite y tú pierdes el juicio por ella, rellena esto:</p>
+        </div>
+
+        <div class="max-w-2xl mx-auto bg-zinc-900 p-8 rounded border-t-4 border-acid shadow-2xl">
+            <form id="contactForm" class="grid grid-cols-1 gap-6">
+                <div>
+                    <label class="block font-bangers text-xl mb-2">NOMBRE O APODO</label>
+                    <input type="text" class="w-full bg-black border border-zinc-700 p-3 text-white focus:border-acid outline-none" placeholder="Ej: El Bujías">
+                </div>
+                <div>
+                    <label class="block font-bangers text-xl mb-2">TU MÁQUINA</label>
+                    <input type="text" class="w-full bg-black border border-zinc-700 p-3 text-white focus:border-acid outline-none" placeholder="Marca y modelo">
+                </div>
+                <button type="button" onclick="handleSubmit()" class="bg-acid text-black font-bangers text-3xl py-4 hover:bg-white transition duration-300">
+                    ENVIAR SOLICITUD
+                </button>
+            </form>
+            <div id="successMsg" class="hidden text-center p-6 bg-acid text-black font-bangers text-2xl mt-4">
+                ¡SOLICITUD RECIBIDA! NOS VEMOS EN EL ASFALTO.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-black border-t border-acid/20 text-center">
+        <p class="font-bangers text-xl text-gray-500 italic">
+            &copy; 2024 BASURILLAS RIDERS - SIN FILTROS, SIN PIEDAD.
+        </p>
+    </footer>
+
+    <script>
+        const motosData = [
+            { id: 1, tag: "READY TO RACE", marca: "KTM Duke 890", desc: "La naranja mecánica de El Bujías.", color: "orange", img: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=500&q=80" },
+            { id: 2, tag: "PURE PASSION", marca: "Ducati Panigale", desc: "El terror rojo de Turbo.", color: "red", img: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=500&q=80" },
+            { id: 3, tag: "TEAM GREEN", marca: "Kawasaki Z900", desc: "El misil verde de Aceite.", color: "acid", img: "https://images.unsplash.com/photo-1628105658117-98782a20b8f4?auto=format&fit=crop&w=500&q=80" },
+            { id: 4, tag: "DARK SIDE", marca: "Yamaha MT-07", desc: "La nocturna de Óxido.", color: "blue", img: "https://images.unsplash.com/photo-1614165933024-c7af21acd32f?auto=format&fit=crop&w=500&q=80" },
+            { id: 5, tag: "WING POWER", marca: "Honda CBR 600", desc: "Fiel compañera de Chatarra.", color: "red", img: "https://images.unsplash.com/photo-1444491741275-3747c53c99b4?auto=format&fit=crop&w=500&q=80" },
+            { id: 6, tag: "THE DOCTOR", marca: "Yamaha R1", desc: "Velocidad pura de Gasolina.", color: "blue", img: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=500&q=80" }
+        ];
+
+        // Rellenar hasta 22 para el ejemplo
+        for(let i=7; i<=22; i++) {
+            const brands = ["KTM", "Ducati", "Kawasaki", "Honda", "Yamaha", "Triumph"];
+            const colors = ["orange", "red", "acid", "white", "blue", "gray"];
+            const randomIdx = Math.floor(Math.random() * brands.length);
+            motosData.push({
+                id: i,
+                tag: "BASURILLA #" + i,
+                marca: brands[randomIdx] + " Custom",
+                desc: "Máquina personalizada preparada para la ruta.",
+                color: colors[randomIdx],
+                img: motosData[i % 5].img
+            });
+        }
+
+        const grid = document.getElementById('grid-motos');
+        motosData.forEach(moto => {
+            let colorClass = "bg-acid text-black";
+            if(moto.color === "orange") colorClass = "bg-orange-600 text-black";
+            if(moto.color === "red") colorClass = "bg-red-600 text-white";
+            if(moto.color === "blue") colorClass = "bg-blue-600 text-white";
+
+            grid.innerHTML += `
+                <div class="card-skew bg-zinc-900 rounded-lg overflow-hidden border border-white/10 shadow-xl">
+                    <div class="h-64 bg-cover bg-center grayscale hover:grayscale-0 transition duration-500" style="background-image: url('${moto.img}')"></div>
+                    <div class="p-6">
+                        <span class="${colorClass} font-bold px-2 py-1 text-xs uppercase mb-2 inline-block">${moto.tag}</span>
+                        <h3 class="font-bangers text-2xl text-white mb-2 uppercase">${moto.marca}</h3>
+                        <p class="text-gray-400 text-sm italic">${moto.desc}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        function handleSubmit() {
+            document.getElementById('contactForm').classList.add('hidden');
+            document.getElementById('successMsg').classList.remove('hidden');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
